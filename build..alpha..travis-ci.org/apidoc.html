@@ -1,0 +1,839 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/creatale/node-fv"
+
+    >fv (v0.0.16)</a>
+</h1>
+<h4>FormVision is a node.js library for extracting data from scanned forms</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv">module fv</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>estimate_transform</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>match_barcodes</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>match_checkboxes</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>match_text</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>math</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">fv.</span>schema</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.estimate_transform">module fv.estimate_transform</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.estimate_transform.estimateTransform">
+            function <span class="apidocSignatureSpan">fv.estimate_transform.</span>estimateTransform
+            <span class="apidocSignatureSpan">(itemsA, itemsB, fallbackScale, requiredMatchCount, findMatch)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.match_barcodes">module fv.match_barcodes</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.match_barcodes.matchBarcodes">
+            function <span class="apidocSignatureSpan">fv.match_barcodes.</span>matchBarcodes
+            <span class="apidocSignatureSpan">(formData, formSchema, barcodes, schemaToPage)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.match_checkboxes">module fv.match_checkboxes</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.match_checkboxes.matchCheckboxes">
+            function <span class="apidocSignatureSpan">fv.match_checkboxes.</span>matchCheckboxes
+            <span class="apidocSignatureSpan">(formData, formSchema, marks, words, schemaToPage, schemaToData)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.match_text">module fv.match_text</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.match_text.matchText">
+            function <span class="apidocSignatureSpan">fv.match_text.</span>matchText
+            <span class="apidocSignatureSpan">(formData, formSchema, words, schemaToPage, rawImage)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.math">module fv.math</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.boundingBox">
+            function <span class="apidocSignatureSpan">fv.math.</span>boundingBox
+            <span class="apidocSignatureSpan">(boxes)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.boxDistanceVector">
+            function <span class="apidocSignatureSpan">fv.math.</span>boxDistanceVector
+            <span class="apidocSignatureSpan">(boxA, boxB)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.center">
+            function <span class="apidocSignatureSpan">fv.math.</span>center
+            <span class="apidocSignatureSpan">(box)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.distance">
+            function <span class="apidocSignatureSpan">fv.math.</span>distance
+            <span class="apidocSignatureSpan">(boxA, boxB)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.distanceVector">
+            function <span class="apidocSignatureSpan">fv.math.</span>distanceVector
+            <span class="apidocSignatureSpan">(vectorA, vectorB)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.intersectBox">
+            function <span class="apidocSignatureSpan">fv.math.</span>intersectBox
+            <span class="apidocSignatureSpan">(boxA, boxB)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.math.length">
+            function <span class="apidocSignatureSpan">fv.math.</span>length
+            <span class="apidocSignatureSpan">(vector)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.fv.schema">module fv.schema</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.schema.unpack">
+            function <span class="apidocSignatureSpan">fv.schema.</span>unpack
+            <span class="apidocSignatureSpan">(object, path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.fv.schema.validate">
+            function <span class="apidocSignatureSpan">fv.schema.</span>validate
+            <span class="apidocSignatureSpan">(field, value, defaultResult)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv" id="apidoc.module.fv">module fv</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.estimate_transform" id="apidoc.module.fv.estimate_transform">module fv.estimate_transform</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.estimate_transform.estimateTransform" id="apidoc.element.fv.estimate_transform.estimateTransform">
+        function <span class="apidocSignatureSpan">fv.estimate_transform.</span>estimateTransform
+        <span class="apidocSignatureSpan">(itemsA, itemsB, fallbackScale, requiredMatchCount, findMatch)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">estimateTransform = function (itemsA, itemsB, fallbackScale, requiredMatchCount, findMatch) {
+  var angle, byDistX, byDistY, distX, distY, expectedAngle, i, index, item, itemA1, itemA2, itemB1, itemB2, j, k, l, len, len1,
+m, matches, offsetX, offsetY, ref, ref1, scaleX, scaleY, transforms;
+  if (requiredMatchCount == null) {
+    requiredMatchCount = 7;
+  }
+  if (findMatch == null) {
+    findMatch = matchText;
+  }
+  matches = new Array(itemsA.length);
+  for (index = k = 0, len = itemsA.length; k &#x3c; len; index = ++k) {
+    item = itemsA[index];
+    matches[index] = findMatch(item, itemsB);
+  }
+  transforms = [];
+  for (i = l = 0, len1 = itemsA.length; l &#x3c; len1; i = ++l) {
+    itemA1 = itemsA[i];
+    if (itemB1 = matches[i]) {
+      for (j = m = ref = i + 1, ref1 = itemsA.length; m &#x3c; ref1; j = m += 1) {
+        itemA2 = itemsA[j];
+        if (itemB2 = matches[j]) {
+          distX = Math.abs(itemB1.box.x - itemB2.box.x);
+          distY = Math.abs(itemB1.box.y - itemB2.box.y);
+          angle = Math.atan2(itemB1.box.x - itemB2.box.x, itemB1.box.y - itemB2.box.y);
+          expectedAngle = Math.atan2(itemA1.box.x - itemA2.box.x, itemA1.box.y - itemA2.box.y);
+          if (distX + distY &#x3e; 1000 &#x26;&#x26; Math.abs(angle - expectedAngle) &#x3c; 0.02) {
+            scaleX = distX / Math.abs(itemA1.box.x - itemA2.box.x);
+            scaleY = distY / Math.abs(itemA1.box.y - itemA2.box.y);
+            transforms.push({
+              distance: [distX, distY],
+              scale: [scaleX, scaleY],
+              offset: [itemB1.box.x - itemA1.box.x * scaleX, itemB1.box.y - itemA1.box.y * scaleY]
+            });
+          }
+        }
+      }
+    }
+  }
+  if (transforms.length &#x3e; requiredMatchCount) {
+    byDistX = transforms.filter(function(i) {
+      return i.distance[0] &#x3e; 20;
+    }).sort(function(a, b) {
+      return a.distance[0] - b.distance[0];
+    });
+    scaleX = avgMedian3((function() {
+      var len2, n, ref2, results;
+      ref2 = byDistX.slice(-7);
+      results = [];
+      for (n = 0, len2 = ref2.length; n &#x3c; len2; n++) {
+        i = ref2[n];
+        results.push(i.scale[0]);
+      }
+      return results;
+    })());
+    offsetX = avgMedian3((function() {
+      var len2, n, ref2, results;
+      ref2 = byDistX.slice(-7);
+      results = [];
+      for (n = 0, len2 = ref2.length; n &#x3c; len2; n++) {
+        i = ref2[n];
+        results.push(i.offset[0]);
+      }
+      return results;
+    })());
+    byDistY = transforms.filter(function(i) {
+      return i.distance[1] &#x3e; 20;
+    }).sort(function(a, b) {
+      return a.distance[1] - b.distance[1];
+    });
+    scaleY = avgMedian3((function() {
+      var len2, n, ref2, results;
+      ref2 = byDistY.slice(-7);
+      results = [];
+      for (n = 0, len2 = ref2.length; n &#x3c; len2; n++) {
+        i = ref2[n];
+        results.push(i.scale[1]);
+      }
+      return results;
+    })());
+    offsetY = avgMedian3((function() {
+      var len2, n, ref2, results;
+      ref2 = byDistY.slice(-7);
+      results = [];
+      for (n = 0, len2 = ref2.length; n &#x3c; len2; n++) {
+        i = ref2[n];
+        results.push(i.offset[1]);
+      }
+      return results;
+    })());
+  } else {
+    scaleX = fallbackScale;
+    scaleY = fallbackScale;
+    offsetX = 0;
+    offsetY = 0;
+  }
+  return function(box) {
+    return {
+      x: box.x * scaleX + offsetX,
+      y: box.y * scaleY + offsetY,
+      width: box.width * scaleX,
+      height: box.height * scaleY
+    };
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.match_barcodes" id="apidoc.module.fv.match_barcodes">module fv.match_barcodes</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.match_barcodes.matchBarcodes" id="apidoc.element.fv.match_barcodes.matchBarcodes">
+        function <span class="apidocSignatureSpan">fv.match_barcodes.</span>matchBarcodes
+        <span class="apidocSignatureSpan">(formData, formSchema, barcodes, schemaToPage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchBarcodes = function (formData, formSchema, barcodes, schemaToPage) {
+  var barcode, barcodeFields, choice, confidence, distance, field, fieldData, i, j, k, len, len1, len2, matchMap, matches, name,
+projection, radius, validFields, value, values;
+  barcodeFields = formSchema.fields.filter(function(field) {
+    return field.type === &#x27;barcode&#x27;;
+  });
+  matchMap = {};
+  for (i = 0, len = barcodes.length; i &#x3c; len; i++) {
+    barcode = barcodes[i];
+    value = barcodeToValue(barcode);
+    validFields = barcodeFields.filter(function(field) {
+      return validate(field, value, false);
+    });
+    for (j = 0, len1 = validFields.length; j &#x3c; len1; j++) {
+      field = validFields[j];
+      if (field.searchRadius &#x3e; 0) {
+        projection = schemaToPage(field.box);
+        distance = length(distanceVector(center(projection), center(barcode.box)));
+        radius = Math.max(projection.width, projection.height) / 2;
+        if (distance &#x3e; radius * field.searchRadius) {
+          continue;
+        }
+      }
+      if (matchMap[name = field.path] == null) {
+        matchMap[name] = [];
+      }
+      matchMap[field.path].push({
+        barcode: barcode,
+        paths: validFields.map(function(field) {
+          return field.path;
+        })
+      });
+    }
+  }
+  for (k = 0, len2 = barcodeFields.length; k &#x3c; len2; k++) {
+    field = barcodeFields[k];
+    if (matchMap[field.path] != null) {
+      matches = matchMap[field.path];
+      if (matches.length &#x3e; 1 &#x26;&#x26; (field.fieldSelector != null)) {
+        values = matches.map(function(match) {
+          return barcodeToValue(match.barcode);
+        });
+        choice = field.fieldSelector(values);
+        confidence = 100;
+        if (!(choice in values)) {
+          throw new Error(&#x27;Returned choice index out of bounds&#x27;);
+        }
+      } else {
+        choice = 0;
+        confidence = 100 / matches.length;
+      }
+      fieldData = unpack(formData, field.path);
+      fieldData.value = barcodeToValue(matches[choice].barcode);
+      fieldData.confidence = confidence;
+      fieldData.box = matches[choice].barcode.box;
+      fieldData.conflicts = matches[choice].paths.filter(function(path) {
+        return path !== field.path;
+      });
+    } else {
+      fieldData = unpack(formData, field.path);
+      fieldData.confidence = 0;
+      fieldData.box = schemaToPage(field.box);
+      fieldData.conflicts = [];
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.match_checkboxes" id="apidoc.module.fv.match_checkboxes">module fv.match_checkboxes</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.match_checkboxes.matchCheckboxes" id="apidoc.element.fv.match_checkboxes.matchCheckboxes">
+        function <span class="apidocSignatureSpan">fv.match_checkboxes.</span>matchCheckboxes
+        <span class="apidocSignatureSpan">(formData, formSchema, marks, words, schemaToPage, schemaToData)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchCheckboxes = function (formData, formSchema, marks, words, schemaToPage, schemaToData) {
+  var assignedFields, checkboxFields, field, remainingFields;
+  checkboxFields = formSchema.fields.filter(function(field) {
+    return field.type === &#x27;checkbox&#x27;;
+  });
+  assignedFields = matchByWords(formData, checkboxFields, words, schemaToPage, schemaToData);
+  remainingFields = (function() {
+    var i, len, results;
+    results = [];
+    for (i = 0, len = checkboxFields.length; i &#x3c; len; i++) {
+      field = checkboxFields[i];
+      if (indexOf.call(assignedFields, field) &#x3c; 0) {
+        results.push(field);
+      }
+    }
+    return results;
+  })();
+  matchByMark(formData, remainingFields, marks, schemaToPage);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.match_text" id="apidoc.module.fv.match_text">module fv.match_text</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.match_text.matchText" id="apidoc.element.fv.match_text.matchText">
+        function <span class="apidocSignatureSpan">fv.match_text.</span>matchText
+        <span class="apidocSignatureSpan">(formData, formSchema, words, schemaToPage, rawImage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchText = function (formData, formSchema, words, schemaToPage, rawImage) {
+  var anchors, choice, conflictingVariants, conflicts, field, fieldData, fieldIndex, image, j, k, l, len, len1, len10, len2, len3
+, len4, len5, len6, len7, len8, len9, m, n, o, p, path, q, r, ref2, ref3, ref4, ref5, ref6, ref7, s, selectedVariant, selectedVariants
+, t, textFields, values, variant, variants, variantsByPath, variantsByWord, word, wordIndex, wordUsage, wordVariant;
+  textFields = formSchema.fields.filter(function(field) {
+    return field.type === &#x27;text&#x27;;
+  });
+  if (textFields.length === 0) {
+    return {};
+  }
+  textFields.sort(function(a, b) {
+    var deltaX, deltaY;
+    deltaY = a.box.y - b.box.y;
+    deltaX = a.box.x - b.box.x;
+    if (Math.abs(deltaY) &#x3c; 20) {
+      return deltaX;
+    } else {
+      return deltaY;
+    }
+  });
+  image = rawImage.toGray();
+  anchors = findAnchors(textFields, words, schemaToPage);
+  variantsByPath = {};
+  variantsByWord = {};
+  for (j = 0, len = textFields.length; j &#x3c; len; j++) {
+    field = textFields[j];
+    variants = findVariants(field, anchors, words, schemaToPage, image);
+    variantsByPath[field.path] = variants;
+    for (k = 0, len1 = variants.length; k &#x3c; len1; k++) {
+      variant = variants[k];
+      ref2 = variant.words;
+      for (l = 0, len2 = ref2.length; l &#x3c; len2; l++) {
+        word = ref2[l];
+        wordIndex = words.indexOf(word);
+        if (variantsByWord[wordIndex] == null) {
+          variantsByWord[wordIndex] = [];
+        }
+        variantsByWord[wordIndex].push(variant);
+      }
+    }
+  }
+  for (m = 0, len3 = textFields.length; m &#x3c; len3; m++) {
+    field = textFields[m];
+    variants = variantsByPath[field.path];
+    if (variants.length === 1 &#x26;&#x26; variants[0].words.length === 1) {
+      word = variants[0].words[0];
+      wordIndex = words.indexOf(word);
+      ref3 = variantsByWord[wordIndex];
+      for (n = 0, len4 = ref3.length; n &#x3c; len4; n++) {
+        variant = ref3[n];
+        if (variant.path === field.path) {
+          continue;
+        }
+        conflictingVariants = variantsByPath[variant.path];
+        if (conflictingVariants.length &#x3e; 1) {
+          conflictingVariants.splice(conflictingVariants.indexOf(variant), 1);
+        }
+      }
+    }
+  }
+  selectedVariants = [];
+  wordUsage = [];
+  for (o = 0, len5 = textFields.length; o &#x3c; len5; o++) {
+    field = textFields[o];
+    variants = variantsByPath[field.path].filter(function(variant) {
+      return !variant.used;
+    });
+    if (variants.length === 0) {
+      variants = variantsByPath[field.path];
+    }
+    if (variants.length &#x3e; 1 &#x26;&#x26; (field.fieldSelector != null)) {
+      values = variants.map(function(variant) {
+        return variant.text;
+      });
+      choice = field.fieldSelector(values);
+      if (!(choice in values)) {
+        throw new Error(&#x27;Returned choice index out of bounds&#x27;);
+      }
+    } else {
+      choice = 0;
+    }
+    selectedVariants.push(selectedVariant = variants[choice]);
+    ref4 = selectedVariant.words;
+    for (p = 0, len6 = ref4.length; p &#x3c; len6; p++) {
+      word = ref4[p];
+      wordIndex = words.indexOf(word);
+      ref5 = variantsByWord[wordIndex];
+      for (q = 0, len7 = ref5.length; q &#x3c; len7; q++) {
+        wordVariant = ref5[q];
+        wordVariant.used = true;
+      }
+      if (wordUsage[wordIndex] == null) {
+        wordUsage[wordIndex] = [];
+      }
+      wordUsage[wordIndex].push(field.path);
+    }
+  }
+  for (fieldIndex = r = 0, len8 = textFields.length; r &#x3c; len8; fieldIndex = ++r) {
+    field = textFields[fieldIndex];
+    selectedVariant = selectedVariants[fieldIndex];
+    conflicts = [field.path];
+    ref6 = selectedVariant.words;
+    for (s = 0, len9 = ref6.length; s &#x3c; len9; s++) {
+      word = ref6[s];
+      wordIndex = words.indexOf(word);
+      ref7 = wordUsage[wordIndex];
+      for (t = 0, len10 = ref7.length; t &#x3c; len10; t++) {
+        path = ref7[t];
+        if (indexOf.call(conflicts, path) &#x3c; 0) {
+          conflicts.push(path);
+        }
+      }
+    }
+    conflicts.splice(0, 1);
+    fieldData = unpack(formData, field.path);
+    fieldData.value = selectedVariant.text;
+    fiel ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.math" id="apidoc.module.fv.math">module fv.math</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.boundingBox" id="apidoc.element.fv.math.boundingBox">
+        function <span class="apidocSignatureSpan">fv.math.</span>boundingBox
+        <span class="apidocSignatureSpan">(boxes)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">boundingBox = function (boxes) {
+  var box, i, len, maxX, maxY, minX, minY;
+  minX = Number.MAX_VALUE;
+  minY = Number.MAX_VALUE;
+  maxX = Number.MIN_VALUE;
+  maxY = Number.MIN_VALUE;
+  for (i = 0, len = boxes.length; i &#x3c; len; i++) {
+    box = boxes[i];
+    if (!(box != null)) {
+      continue;
+    }
+    minX = Math.min(box.x, minX);
+    minY = Math.min(box.y, minY);
+    maxX = Math.max(box.x, maxX);
+    maxY = Math.max(box.y, maxY);
+    minX = Math.min(box.x + box.width, minX);
+    minY = Math.min(box.y + box.height, minY);
+    maxX = Math.max(box.x + box.width, maxX);
+    maxY = Math.max(box.y + box.height, maxY);
+  }
+  return {
+    x: minX,
+    y: minY,
+    width: maxX - minX,
+    height: maxY - minY
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.boxDistanceVector" id="apidoc.element.fv.math.boxDistanceVector">
+        function <span class="apidocSignatureSpan">fv.math.</span>boxDistanceVector
+        <span class="apidocSignatureSpan">(boxA, boxB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">boxDistanceVector = function (boxA, boxB) {
+  return {
+    x: Math.max(boxA.x, boxB.x) - Math.min(boxA.x + boxA.width, boxB.x + boxB.width),
+    y: Math.max(boxA.y, boxB.y) - Math.min(boxA.y + boxA.height, boxB.y + boxB.height)
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.center" id="apidoc.element.fv.math.center">
+        function <span class="apidocSignatureSpan">fv.math.</span>center
+        <span class="apidocSignatureSpan">(box)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">center = function (box) {
+  return {
+    x: box.x + box.width / 2,
+    y: box.y + box.height / 2
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.distance" id="apidoc.element.fv.math.distance">
+        function <span class="apidocSignatureSpan">fv.math.</span>distance
+        <span class="apidocSignatureSpan">(boxA, boxB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">distance = function (boxA, boxB) {
+  var center1X, center1Y, center2X, center2Y, ref, ref1, ref2, ref3;
+  center1X = boxA.x + ((ref = boxA.width) != null ? ref : 0) / 2;
+  center1Y = boxA.y + ((ref1 = boxA.height) != null ? ref1 : 0) / 2;
+  center2X = boxB.x + ((ref2 = boxB.width) != null ? ref2 : 0) / 2;
+  center2Y = boxB.y + ((ref3 = boxB.height) != null ? ref3 : 0) / 2;
+  return Math.abs(center1X - center2X) + Math.abs(center1Y - center2Y);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.distanceVector" id="apidoc.element.fv.math.distanceVector">
+        function <span class="apidocSignatureSpan">fv.math.</span>distanceVector
+        <span class="apidocSignatureSpan">(vectorA, vectorB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">distanceVector = function (vectorA, vectorB) {
+  return {
+    x: vectorA.x - vectorB.x,
+    y: vectorA.y - vectorB.y
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.intersectBox" id="apidoc.element.fv.math.intersectBox">
+        function <span class="apidocSignatureSpan">fv.math.</span>intersectBox
+        <span class="apidocSignatureSpan">(boxA, boxB)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">intersectBox = function (boxA, boxB) {
+  return boxA.x &#x3c; (boxB.x + boxB.width) &#x26;&#x26; (boxA.x + boxA.width) &#x3e; boxB.x &#x26;&#x26; boxA.y &#x3c; (boxB.y + boxB.height) &#x26;&#x26; (boxA.y + boxA.height
+) &#x3e; boxB.y;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.math.length" id="apidoc.element.fv.math.length">
+        function <span class="apidocSignatureSpan">fv.math.</span>length
+        <span class="apidocSignatureSpan">(vector)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">length = function (vector) {
+  return Math.sqrt(vector.x * vector.x + vector.y * vector.y);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.fv.schema" id="apidoc.module.fv.schema">module fv.schema</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.fv.schema.unpack" id="apidoc.element.fv.schema.unpack">
+        function <span class="apidocSignatureSpan">fv.schema.</span>unpack
+        <span class="apidocSignatureSpan">(object, path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unpack = function (object, path) {
+  var i, item, len, ref, tail;
+  tail = object;
+  ref = path.split(&#x27;.&#x27;);
+  for (i = 0, len = ref.length; i &#x3c; len; i++) {
+    item = ref[i];
+    if (tail[item] == null) {
+      tail[item] = {};
+    }
+    tail = tail[item];
+  }
+  return tail;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.fv.schema.validate" id="apidoc.element.fv.schema.validate">
+        function <span class="apidocSignatureSpan">fv.schema.</span>validate
+        <span class="apidocSignatureSpan">(field, value, defaultResult)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validate = function (field, value, defaultResult) {
+  if (field.fieldValidator != null) {
+    return Boolean(field.fieldValidator(value));
+  } else {
+    return defaultResult;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
