@@ -534,7 +534,13 @@ local.templateApidocHtml = '\
             local.objectSetDefault(options, {
                 env: { npm_package_description: '' },
                 packageJson: JSON.parse(readExample('package.json')),
-                require: require
+                require: function (file) {
+                    try {
+                        return require(file);
+                    } catch (errorCaught) {
+                        console.error(errorCaught);
+                    }
+                }
             });
             Object.keys(options.packageJson).forEach(function (key) {
                 tmp = options.packageJson[key];
@@ -567,8 +573,9 @@ local.templateApidocHtml = '\
                 libFileList: [],
                 moduleDict: {},
                 moduleExtraDict: {},
+                packageJson: { bin: {} },
                 template: local.templateApidocHtml
-            });
+            }, 2);
             // init exampleList
             options.exampleList = options.exampleList.concat(options.exampleFileList.concat(
                 local.fs.readdirSync(options.dir)
@@ -589,8 +596,8 @@ local.templateApidocHtml = '\
                 moduleMain = {};
                 moduleMain = options.moduleDict[options.env.npm_package_name] ||
                     options.require(options.dir) ||
-                    options.require(options.dir + '/' + (options.packageJson.bin || {})[
-                        Object.keys(options.packageJson.bin || {})[0]
+                    options.require(options.dir + '/' + (options.packageJson.bin)[
+                        Object.keys(options.packageJson.bin)[0]
                     ]) || {};
                 console.error('apidocCreate - ... required ' + options.dir);
             } catch (ignore) {
@@ -14697,6 +14704,7 @@ instruction\n\
         /*
          * this function will create test-report artifacts
          */
+            testReport = local.objectSetDefault(testReport, { testPlatformList: [] });
             // print test-report summary
             console.error('\n' + new Array(56).join('-') + '\n' + testReport.testPlatformList
                 .filter(function (testPlatform) {
@@ -14753,8 +14761,7 @@ instruction\n\
             if (testReport.testsFailed) {
                 console.error('\n' + JSON.stringify(testReport, null, 4) + '\n');
             }
-            // exit with number of tests failed
-            local.exit(testReport.testsFailed);
+            return testReport;
         };
 
         local.testReportMerge = function (testReport1, testReport2) {
@@ -15689,6 +15696,11 @@ instruction\n\
                     onParallel(exitCode && new Error(exitCode), options);
                 });
             }, local.exit);
+            return;
+        case 'testReportCreate':
+            local.exit(local.testReportCreate(local.tryCatchOnError(function () {
+                return require(local.env.npm_config_dir_build + '/test-report.json');
+            }, local.onErrorDefault)).testsFailed);
             return;
         }
         // init lib
